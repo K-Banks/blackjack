@@ -39,21 +39,35 @@ public class Player {
                 cardPoints = 8;
             } else if (cardValue.equals("9")){
                 cardPoints = 9;
+            } else if (cardValue.equals("ace")) {
+                cardPoints = 1;
             } else {
                 cardPoints = 10;
             }
             handPoints += cardPoints;
         }
-//        for (String card : hand) {
-//            String[] singleCardSplit = card.split(" ");
-//            String cardValue = singleCardSplit[0];
-//            if (handPoints > 21 && cardValue.equals("Ace")) {
-//                handPoints -= 10;
-//                singleCardSplit[0] = "ace";
-//                hand.remove(card);
-//                String newCard = singleCardSplit.join(" ");
-//            }
-//        }
+        handPoints = this.aceChecker(handPoints);
         return handPoints;
+    }
+
+    public Integer aceChecker(Integer points) {
+        if (points > 21) {
+            int tracker = 0;
+            for (String card: hand) {
+                String[] singleCardSplit = card.split(" ");
+                if (singleCardSplit[0].equals("Ace")) {
+                    String newCard = "ace " + singleCardSplit[1] + " " + singleCardSplit[2];
+                    hand.add(newCard);
+                    hand.remove(card);
+                    tracker = 1;
+                }
+                if (tracker > 0) {
+                    Integer value = this.valueOfHand();
+                    return value;
+                }
+            }
+
+        }
+        return points;
     }
 }

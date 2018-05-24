@@ -40,4 +40,12 @@ public class PlayerTest {
         assertEquals(11, testPlayer.valueOfHand());
 
     }
+
+    @Test
+    public void aceCheck_changesValueOfAce_12() {
+        Player testPlayer = new Player();
+        testPlayer.addCard("Ace of Hearts");
+        testPlayer.addCard("Ace of Hearts");
+        assertEquals(12, testPlayer.valueOfHand());
+    }
 }
