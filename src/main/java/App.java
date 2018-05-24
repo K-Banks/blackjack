@@ -30,7 +30,7 @@ public class App {
 
                 boolean gameState = true;
                 while (gameState) {
-                    System.out.println("Do you hit or check?");
+                    System.out.println("Do you hit or stand?");
                     String choice = bufferedReader.readLine().toLowerCase();
                     if (choice.equals("hit")){
                         user.addCard(blackjack.drawCard());
@@ -51,8 +51,8 @@ public class App {
                         if (dealer.valueOfHand() > 21) {
                             System.out.println("The dealer busted. You win.");
                             gameState = false;
-                        } else if (dealer.valueOfHand() == 21 && user.valueOfHand() == 21) {
-                            System.out.println("Tie game.");
+                        } else if (dealer.valueOfHand() == 21 && user.valueOfHand() == 21 || dealer.valueOfHand() == user.valueOfHand()) {
+                            System.out.println("Tie game. Dealer Wins");
                             gameState = false;
                         } else if (dealer.valueOfHand() == 21) {
                             System.out.println("Dealer wins.");
