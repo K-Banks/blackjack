@@ -39,6 +39,9 @@ public class App {
                         if (user.valueOfHand() > 21) {
                             System.out.println("You busted.");
                             gameState = false;
+                        } else if (user.valueOfHand() == 21 ) {
+                            System.out.println("Blackjack. You Win.");
+                            gameState = false;
                         }
                     } else {
                         System.out.println("Dealer hand: " + dealer.getHand());
